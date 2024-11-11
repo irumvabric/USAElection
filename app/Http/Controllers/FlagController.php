@@ -9,4 +9,7 @@ class FlagController extends Controller
     public function showFlagHome(){
         return view('flaghome');
     }
+    public function createFlag(){
+
+    }
 }
