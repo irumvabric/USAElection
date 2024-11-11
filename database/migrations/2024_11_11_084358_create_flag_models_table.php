@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('flag_models', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->index();
+            $table->string('image');
             $table->timestamps();
         });
     }

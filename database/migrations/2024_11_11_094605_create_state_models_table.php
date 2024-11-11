@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('state_models', function (Blueprint $table) {
             $table->id();
+            $table->string('image');
+            $table->double('pib');
+            $table->double('population');
+            $table->double('area');
+            $table->double('id_flag');
             $table->timestamps();
         });
     }

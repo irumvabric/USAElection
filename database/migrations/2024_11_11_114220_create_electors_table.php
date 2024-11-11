@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('party_models', function (Blueprint $table) {
+        Schema::create('electors', function (Blueprint $table) {
             $table->id();
-            $table->string('name_party');
+            $table->string('name_elector');
+            $table->string('id_parti');
+            $table->string('id_state');
+            $table->string('gender');
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('party_models');
+        Schema::dropIfExists('electors');
     }
 };
