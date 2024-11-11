@@ -8,7 +8,9 @@
         body {
             font-family: Arial, sans-serif;
         }
-
+        h1{
+            text-align: center;
+        }
         form {
             width: 50%;
             margin: 0 auto;

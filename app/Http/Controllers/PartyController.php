@@ -6,7 +6,13 @@ use Illuminate\Http\Request;
 
 class PartyController extends Controller
 {
-    public function showPartyHome(){
+    public function showPartyCreate(){
         return view('partyhome');
+    }
+    public function showPartyHome(){
+        return view('party.homeparty');
+    }
+    public function showPartyDelete(){
+        return view('party.deleteparty');
     }
 }

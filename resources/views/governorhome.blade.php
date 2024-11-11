@@ -8,7 +8,9 @@
         body {
             font-family: Arial, sans-serif;
         }
-
+        h1{
+            text-align: center;
+        }
         form {
             width: 50%;
             margin: 0 auto;
@@ -43,7 +45,7 @@
     </style>
 </head>
 <body>
-    <h1>New governor page</h1>
+    <h1>Create or edit governor page</h1>
     <form action="submit_senateur.php" method="post">
 
         <label for="id_senateur">ID Governor:</label>
