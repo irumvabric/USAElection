@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('state_models', function (Blueprint $table) {
-            $table->id();
-            $table->string('image');
+            $table->string("id");
+            $table->string('name');
             $table->double('pib');
             $table->double('population');
             $table->double('area');
