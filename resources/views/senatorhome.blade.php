@@ -42,6 +42,7 @@
 </head>
 <body>
     <form action="submit_senateur.php" method="post">
+
         <label for="id_senateur">ID Sénateur:</label>
         <input type="number" id="id_senateur" name="id_senateur" required>
 
@@ -64,6 +65,7 @@
         <input type="number" id="id_parti" name="id_parti" required>
 
         <button type="submit">Submit</button>
+        
     </form>
 </body>
 </html>
