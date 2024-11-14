@@ -62,11 +62,20 @@
         <label for="age_senateur">Age:</label>
         <input type="number" id="age_senateur" name="age_senateur">
 
-        <label for="id_etat">ID state:</label>
-        <input type="number" id="id_etat" name="id_etat" required>
+        <label for="id_etat">State:</label>
+        <select id="id_etat" name="id_etat" required>
+        @foreach ($states as $state)
+            <option value="{{ $state->id }}">{{ $state->name }}</option>
+        @endforeach
+        </select>   
 
-        <label for="id_parti">ID Party:</label>
-        <input type="number" id="id_parti" name="id_parti" required>
+        <label for="id_parti">Party:</label>
+        <select id="id_parti" name="id_parti" required>
+        @foreach ($parties as $party)
+            <option value="{{ $party->id }}">{{ $party->name_party }}</option>
+        @endforeach
+        </select>
+       
 
         <button type="submit">Submit</button>
         <button type="reset">Cancel</button>
