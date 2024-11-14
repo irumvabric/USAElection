@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\StateModel;
 
 class StateController extends Controller
 {
@@ -10,7 +11,8 @@ class StateController extends Controller
         return view('statehome');
     }
     public function showStateHome(){
-        return view('states.homestate');
+        $states = StateModel::all();
+        return view('states.homestate',['states'=>$states]);
     }
     public function showStateDelete(){
         return view('states.deletestate');

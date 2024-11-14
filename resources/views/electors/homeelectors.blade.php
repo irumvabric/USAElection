@@ -11,7 +11,7 @@
         h1{
             text-align: center;
         }
-        form {
+        table {
             width: 50%;
             margin: 0 auto;
             padding: 20px;
@@ -27,5 +27,29 @@
 </head>
 <body>
     <h1>Electors Home</h1>
+    @if (count($electors) > 0)
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Party</th>
+            <th>State</th>
+            <th>Recorded</th>
+            <th>Updated</th>
+        </tr>
+        @foreach($electors as $elector)
+        <tr>
+            <td>{{ $elector->id }}</td>
+            <td>{{ $elector->name }}</td>
+            <td>{{ $elector->gender }}</td>
+            <td>{{ $elector->party->name }}</td>
+            <td>{{ $elector->state->name }}</td>
+            <td>{{ $elector->created_at }}</td>
+            <td>{{ $elector->updated_at }}</td>
+        </tr>
+    @endforeach
+    </table>
+    @endif
 </body>
 </html>

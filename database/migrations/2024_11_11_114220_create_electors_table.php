@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('electors', function (Blueprint $table) {
             $table->id();
             $table->string('name_elector');
-            $table->string('id_parti');
-            $table->string('id_state');
+            $table->foreignId('id_parti')->constrained();
+            $table->foreignId('id_state')->constrained();
             $table->string('gender');
             $table->timestamps();
         });

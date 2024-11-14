@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PartyModel;
 
 class PartyController extends Controller
 {
@@ -10,7 +11,8 @@ class PartyController extends Controller
         return view('partyhome');
     }
     public function showPartyHome(){
-        return view('party.homeparty');
+        $parties = PartyModel::all();
+        return view('party.homeparty',['parties'=> $parties]);
     }
     public function showPartyDelete(){
         return view('party.deleteparty');

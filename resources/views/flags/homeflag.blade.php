@@ -11,7 +11,7 @@
         h1{
             text-align: center;
         }
-        form {
+        table{
             width: 50%;
             margin: 0 auto;
             padding: 20px;
@@ -27,5 +27,22 @@
 </head>
 <body>
     <h1>Flag Home</h1>
+    @if (count($flags) > 0)
+    <table>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+            </tr>
+            @foreach($flags as $flag)
+                <tr>
+                    <td>{{ $flag->id }}</td>
+                    <td>{{ $flag->image }}</td>
+
+                </tr>
+            @endforeach
+    </table>
+    @else
+        <p>No flags found.</p>
+    @endif
 </body>
 </html>

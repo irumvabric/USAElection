@@ -11,7 +11,7 @@
         h1{
             text-align: center;
         }
-        form {
+        table {
             width: 50%;
             margin: 0 auto;
             padding: 20px;
@@ -27,5 +27,27 @@
 </head>
 <body>
     <h1>State Home</h1>
+        @if (count($states) > 0)
+        <table>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>GPA/PIB</th>
+                    <th>Population</th>
+                    <th>Area</th>
+                    <th>Flag</th>
+                </tr>
+                @foreach($states as $state)
+                    <tr>
+                        <td>{{ $state->code }}</td>
+                        <td>{{ $state->name }}</td>
+                        <td>{{ $state->pib }}</td>
+                        <td>{{ $state->population }}</td>
+                        <td>{{ $state->area }}</td>
+                        <td>{{ $state->id_flag }}</td>
+                    </tr>
+                @endforeach
+        </table>
+        @endif
 </body>
 </html>

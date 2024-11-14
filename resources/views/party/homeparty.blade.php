@@ -11,7 +11,7 @@
         h1{
             text-align: center;
         }
-        form {
+        table {
             width: 50%;
             margin: 0 auto;
             padding: 20px;
@@ -27,5 +27,19 @@
 </head>
 <body>
     <h1>Party Home</h1>
+    @if (count($parties) > 0)
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+        </tr>
+        @foreach($parties as $party)
+        <tr>
+            <td>{{ $party->id }}</td>
+            <td>{{ $party->name_party }}</td>
+        </tr>
+    @endforeach
+    </table>
+    @endif
 </body>
 </html>
