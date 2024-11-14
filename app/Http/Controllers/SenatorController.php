@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Senator;
 
 class SenatorController extends Controller
 {
     public function showSenatorHome(){
-        return view('senators.homeSenator');
+        $senators = Senator::all();
+        return view('senators.homeSenator',['senators'=>$senators]);
     }
     public function showSenatorCreate(){
         return view('senatorhome');
