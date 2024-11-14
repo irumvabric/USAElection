@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StateModel;
 use Illuminate\Http\Request;
 
 class StateController extends Controller
@@ -10,7 +11,9 @@ class StateController extends Controller
         return view('statehome');
     }
     public function showStateHome(){
-        return view('states.homestate');
+        $states = StateModel::all();
+
+        return view('states.homestate', ['states' => $states]);
     }
     public function showStateDelete(){
         return view('states.deletestate');
