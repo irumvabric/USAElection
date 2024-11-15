@@ -22,9 +22,9 @@ class PartyController extends Controller
             'name_party' => ['required','min:3','max:50'],
         ]);
         Party::create([
-            'name_party'=> $request->name,
+            'name_party'=> $request->name_party,
         ]);
-        return redirect('/party')->with('status', 'Prty added');
+        return redirect('/party')->with('status', 'Party added');
     }
     public function updateParty(int $id){
         $party = Party::findOrfail($id);
@@ -40,6 +40,6 @@ class PartyController extends Controller
     public function deleteParty(int $id){
         $party = Party::findOrfail($id);
         $party->delete();
-        return redirect('/senpartyator')->with('status', 'Party deleted');
+        return redirect('/party')->with('status', 'Party deleted');
     }
 }

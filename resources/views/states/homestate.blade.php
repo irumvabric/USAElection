@@ -45,9 +45,9 @@
                         <td>{{ $state->population }}</td>
                         <td>{{ $state->area }}</td>
                         <td>
-                            <a href="/edsenator/{{$state->id}}">Edit</a>
+                            <a href="/edstate/{{$state->id}}">Edit</a>
                             <a
-                            href="/delsenator/{{$state->id}}"
+                            href="/delstate/{{$state->id}}"
                             onclick="return confirm('Are you sure you want to delete state?')"
                             >Delete</a>
                         </td>

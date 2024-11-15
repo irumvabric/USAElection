@@ -29,7 +29,7 @@ class PresElectorController extends Controller
             'party_id' => 'required|integer',
         ]);
         Elector::create([
-            'name_party'=> $request->name_elector,
+            'name_elector'=> $request->name_elector,
             'gender'=> $request->gender,
             'party_id'=> $request->party_id,
             'state_id'=> $request->state_id,

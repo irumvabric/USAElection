@@ -45,14 +45,12 @@
     </style>
 </head>
 <body>
-    <h1>Create or Edit flag page</h1>
-    <form action="submit_senateur.php" method="post">
+    <h1>Create flag page</h1>
+    <form action="/postflag" method="post">
+        @csrf
 
-        <label for="id_senateur">Flag ID:</label>
-        <input type="number" id="id_senateur" name="id_senateur" required>
-
-        <label for="nom_senateur">Image:</label>
-        <input type="file" id="fileInput">
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image">
 
         <button type="submit">Submit</button>
         <button type="reset">Cancel</button>

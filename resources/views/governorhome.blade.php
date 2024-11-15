@@ -45,26 +45,44 @@
     </style>
 </head>
 <body>
-    <h1>Create or edit governor page</h1>
-    <form action="submit_senateur.php" method="post">
-
-        <label for="id_senateur">ID Governor:</label>
-        <input type="number" id="id_senateur" name="id_senateur" required>
+    <h1>Create governor page</h1>
+    <form action="/postgovernor" method="post">
+        @csrf
 
         <label for="nom_senateur">Full name:</label>
-        <input type="text" id="nom_senateur" name="nom_senateur" required>
+        <input type="text" id="name_governor" name="name_governor" required>
+        @error('name_governor')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
-        <label for="genre_senateur">Gender:</label>
-        <select id="genre_senateur" name="genre_senateur" required>
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
+        @error('gender')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
         <label for="id_etat">State:</label>
-        <input type="number" id="id_etat" name="id_etat" required>
+        <select id="state_id" name="state_id">
+            @foreach ($states as $state)
+                <option value="{{ $state->id }}">{{ $state->name }}</option>
+            @endforeach
+           </select>
+           @error('state_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
 
         <label for="id_parti">Party:</label>
-        <input type="number" id="id_parti" name="id_parti" required>
+        <select id="party_id" name="party_id">
+            @foreach ($parties as $party)
+                <option value="{{ $party->id }}">{{ $party->name_party}}</option>
+            @endforeach
+        </select>
+        @error('party_id')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
         <button type="submit">Submit</button>
         <button type="reset">Cancel</button>

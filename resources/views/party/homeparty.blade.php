@@ -12,9 +12,9 @@
             text-align: center;
         }
         table {
-            width: 50%;
+            width: 30%;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
@@ -32,11 +32,19 @@
         <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Action</th>
         </tr>
         @foreach($parties as $party)
         <tr>
             <td>{{ $party->id }}</td>
             <td>{{ $party->name_party }}</td>
+            <td>
+                <a href="/edparty/{{$party->id}}">Edit</a>
+                <a
+                href="/delparty/{{$party->id}}"
+                onclick="return confirm('Are you sure you want to delete senator?')"
+                >Delete</a>
+            </td>
         </tr>
     @endforeach
     </table>

@@ -4,18 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Governor;
-use App\Models\StateModel;
-use App\Models\PartyModel;
+use App\Models\State;
+use App\Models\Party;
 class GovernorController extends Controller
 {
     public function showGovernorHome(){
         $governors= Governor::all();
-        return view('goverors.homegovernors',['governors'=>$governors]);
+        return view('governors.homegouvernors',['governors'=>$governors]);
     }
 
     public function showGovernorCreate(){
-        $states= StateModel::all();
-        $parties = PartyModel::all();
+        $states= State::all();
+        $parties = Party::all();
         return view('governorhome',['states'=>$states,'parties'=>$parties]);
     }
 
@@ -30,7 +30,7 @@ class GovernorController extends Controller
             'party_id' => 'required|integer',
         ]);
         Governor::create([
-            'name'=> $request->name,
+            'name_governor'=> $request->name_governor,
             'gender'=> $request->gender,
             'age'=> $request->age,
             'party_id'=> $request->party_id,
@@ -42,16 +42,14 @@ class GovernorController extends Controller
         $governor = Governor::findOrfail($id);
         $states= State::all();
         $parties = Party::all();
-        return view('senators.senatorEdit',['states'=>$states,'parties'=>$parties,'governor'=>$governor]);
+        return view('governors.governoredit',['states'=>$states,'parties'=>$parties,'governor'=>$governor]);
     }
     public function update(Request $req, int $id){
         $req->validate([
-            $request->validate([
                 'name_governor' => ['required','min:3','max:50'],
                 'gender' => 'required',
                 'state_id' => 'required|integer',
                 'party_id' => 'required|integer',
-            ]);
         ]);
         Governor::findOrfail($id)->update($req->all());
         return redirect('/governor')->with('status', 'governor updated');

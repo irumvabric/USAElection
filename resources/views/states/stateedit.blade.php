@@ -57,6 +57,9 @@
                     </td>
                     <td>
                     <input type="text" id="code" name="code" placeholder="Enter state name" required value="{{$state->code}}">
+                    @error('code')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     </td>
                 </tr>
                 <tr>
@@ -65,6 +68,9 @@
                     </td>
                     <td>
                     <input type="text" id="name" name="name" placeholder="Enter state name" required value="{{$state->name}}">
+                    @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     </td>
                 </tr>
                 <tr>
@@ -73,6 +79,9 @@
                     </td>
                     <td>
                         <input type="number" step="0.01" id="pib" name="pib" placeholder="Enter GDP value" value="{{$state->pib}}">
+                        @error('pib')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </td>
                 </tr>
                 <tr>
@@ -81,6 +90,9 @@
                     </td>
                     <td>
                         <input type="number" id="population" name="population" placeholder="Enter population" value="{{$state->population}}" >
+                        @error('population')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </td>
                 </tr>
                 <tr>
@@ -88,7 +100,10 @@
                         <label for="superficie">Area (Superficie):</label>
                     </td>
                     <td>
-                        <input type="number" id="superficie" name="superficie" placeholder="Enter area size" value="{{$state->area}}">
+                        <input type="number" id="area" name="area" placeholder="Enter area size" value="{{$state->area}}">
+                        @error('area')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </td>
                 </tr>
                 <tr>

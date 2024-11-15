@@ -37,6 +37,7 @@
                 <th>State</th>
                 <th>Recorded</th>
                 <th>Updated</th>
+                <th>Action</th>
             </tr>
             @foreach($governors as $governor)
                 <tr>
@@ -47,6 +48,14 @@
                     <td>{{ $governor->state->name }}</td>
                     <td>{{ $governor->created_at }}</td>
                     <td>{{ $governor->updated_at }}</td>
+                    <td>
+                        <a href="/edgovernor/{{$governor->id}}">Edit</a>
+                        <a
+                            href="/delgovernor/{{$governor->id}}"
+                            onclick="return confirm('Are you sure you want to delete governor?')"
+                        >Delete
+                        </a>
+                    </td>
                 </tr>
     @endforeach
     </table>
