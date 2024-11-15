@@ -7,14 +7,18 @@ use App\Models\Senator;
 use App\Models\Governor;
 use App\Models\Elector;
 
-
-class PartyModel extends Model
+class State extends Model
 {
+    protected $fillable= [
+        'code',
+        'name',
+        'pib',
+        'population',
+        'area',
+        'id_flag'
+    ];
     public function senators(){
         return $this->hasMany(Senator::class);
-    }
-    public function governors(){
-        return $this->hasMany(Governor::class);
     }
     public function electors(){
         return $this->hasMany(Elector::class);

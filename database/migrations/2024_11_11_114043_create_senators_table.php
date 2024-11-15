@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('senators', function (Blueprint $table) {
             $table->id();
-            $table->string('name_senator');
-            $table->foreignId('id_parti')->constrained();
-            $table->foreignId('id_state')->constrained();
+            $table->string('name');
             $table->string('gender');
             $table->double('age');
             $table->timestamps();
+            $table->foreignId('party_id')->constrained();
+            $table->foreignId('state_id')->constrained();
         });
     }
 

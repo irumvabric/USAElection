@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>State Home</title>
+    <title>Presidential elector Home</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -46,56 +46,56 @@
 </head>
 <body>
     <div class="container">
-        <h1>Create a new state page</h1>
-        <form method="POST" action="/postState">
-            @csrf
+        <h1>Create a new presidential elector page</h1>
+        <form>
             <table>
                 <tr>
                     <td>
-                        <label for="nom_etat">State Code:</label>
+                        <label for="nom">Full name:</label>
                     </td>
                     <td>
-                    <input type="text" id="code" name="code" placeholder="Enter state name" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="nom_etat">State Name:</label>
-                    </td>
-                    <td>
-                    <input type="text" id="name" name="name" placeholder="Enter state name" required>
+                    <input type="text" id="nom_etat" name="nom_etat" placeholder="Enter state name" required>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="pib">GDP (PIB):</label>
+                        <label for="genre">Gender:</label>
                     </td>
                     <td>
-                        <input type="number" step="0.01" id="pib" name="pib" placeholder="Enter GDP value">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="population">Population:</label>
-                    </td>
-                    <td>
-                        <input type="number" id="population" name="population" placeholder="Enter population">
+                        <select>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="superficie">Area (Superficie):</label>
+                        <label for="etat">State:</label>
                     </td>
                     <td>
-                        <input type="number" id="area" name="area" placeholder="Enter area size">
+                        <select>
+                            <option>Arizona</option>
+                            <option>Washington</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <button type="submit" class="btn primary">Save</button>
+                        <label for="superficie">Party:</label>
                     </td>
                     <td>
-                        <button type="reset" class="btn primary">Cancel</button>
+                        <select>
+                            <option>Republic</option>
+                            <option>Democrate</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="btn primary">Save</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn primary">Cancel</button>
 
                     </td>
                 </tr>

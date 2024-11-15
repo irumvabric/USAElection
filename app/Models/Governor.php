@@ -8,6 +8,12 @@ use App\Models\StateModel;
 
 class Governor extends Model
 {
+    protected $fillable= [
+        'name_governor',
+        'gender',
+        'party_id',
+        'state_id'
+    ];
     public function party()
     {
      return $this->belongsTo(PartyModel::class);

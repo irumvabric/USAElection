@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PartyModel;
+use App\Models\Party;
 
 class PartyController extends Controller
 {
@@ -11,10 +11,35 @@ class PartyController extends Controller
         return view('partyhome');
     }
     public function showPartyHome(){
-        $parties = PartyModel::all();
+        $parties = Party::all();
         return view('party.homeparty',['parties'=> $parties]);
     }
     public function showPartyDelete(){
         return view('party.deleteparty');
+    }
+    public function createParty(Request $request){
+        $request->validate([
+            'name_party' => ['required','min:3','max:50'],
+        ]);
+        Party::create([
+            'name_party'=> $request->name,
+        ]);
+        return redirect('/party')->with('status', 'Prty added');
+    }
+    public function updateParty(int $id){
+        $party = Party::findOrfail($id);
+        return view('party.partyedit',['party'=>$party]);
+    }
+    public function update(Request $req, int $id){
+        $req->validate([
+            'name_party' => ['required','min:3','max:50'],
+        ]);
+        Party::findOrfail($id)->update($req->all());
+        return redirect('/party')->with('status', 'Party updated');
+    }
+    public function deleteParty(int $id){
+        $party = Party::findOrfail($id);
+        $party->delete();
+        return redirect('/senpartyator')->with('status', 'Party deleted');
     }
 }

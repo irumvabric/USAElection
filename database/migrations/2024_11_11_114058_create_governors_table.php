@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('governors', function (Blueprint $table) {
             $table->id();
             $table->string('name_governor');
-            $table->foreignId('id_parti')->constrained();
-            $table->foreignId('id_state')->constrained();
             $table->string('gender');
             $table->timestamps();
+            $table->foreignId('party_id')->constrained();
+            $table->foreignId('state_id')->constrained();
         });
     }
 

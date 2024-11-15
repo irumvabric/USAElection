@@ -32,9 +32,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        alert{
-            color: red;
-        }
+
         button {
             background-color: #4CAF50;
             color: white;
@@ -47,17 +45,19 @@
 </head>
 <body>
 
-    <h1>Create senator page</h1>
-    <form action="/postsenator" method="post">
+    <h1>Edit senator page</h1>
+    <form action="/edsenator/{{$senator->id}}" method="post">
         @csrf
+        @method("PUT")
         <label for="nom_senateur">Full name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" required value={{$senator->name}}>
         @error('name')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 
         <label for="genre_senateur">Gender:</label>
-        <select id="gender" name="gender" required>
+        <select id="gender" name="gender" required >
+
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
@@ -65,11 +65,11 @@
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age">
+        <label for="age_senateur">Age:</label>
+        <input type="number" id="age" name="age" value={{$senator->age}}>
         @error('age')
         <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+        @enderror
 
         <label for="id_etat">State:</label>
        <select id="state_id" name="state_id">
@@ -82,7 +82,7 @@
         @enderror
 
         <label for="id_parti">Party:</label>
-        <select id="party_id" name="party_id">
+        <select id="party_id" name="party_id" >
             @foreach ($parties as $party)
                 <option value="{{ $party->id }}">{{ $party->name_party}}</option>
             @endforeach

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>State Home</title>
+    <title>State Edit</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -46,16 +46,17 @@
 </head>
 <body>
     <div class="container">
-        <h1>Create a new state page</h1>
-        <form method="POST" action="/postState">
+        <h1>Edit state page</h1>
+        <form method="POST" action="/edstate/{{$state->id}}">
             @csrf
+            @method("PUT")
             <table>
                 <tr>
                     <td>
                         <label for="nom_etat">State Code:</label>
                     </td>
                     <td>
-                    <input type="text" id="code" name="code" placeholder="Enter state name" required>
+                    <input type="text" id="code" name="code" placeholder="Enter state name" required value="{{$state->code}}">
                     </td>
                 </tr>
                 <tr>
@@ -63,7 +64,7 @@
                         <label for="nom_etat">State Name:</label>
                     </td>
                     <td>
-                    <input type="text" id="name" name="name" placeholder="Enter state name" required>
+                    <input type="text" id="name" name="name" placeholder="Enter state name" required value="{{$state->name}}">
                     </td>
                 </tr>
                 <tr>
@@ -71,7 +72,7 @@
                         <label for="pib">GDP (PIB):</label>
                     </td>
                     <td>
-                        <input type="number" step="0.01" id="pib" name="pib" placeholder="Enter GDP value">
+                        <input type="number" step="0.01" id="pib" name="pib" placeholder="Enter GDP value" value="{{$state->pib}}">
                     </td>
                 </tr>
                 <tr>
@@ -79,7 +80,7 @@
                         <label for="population">Population:</label>
                     </td>
                     <td>
-                        <input type="number" id="population" name="population" placeholder="Enter population">
+                        <input type="number" id="population" name="population" placeholder="Enter population" value="{{$state->population}}" >
                     </td>
                 </tr>
                 <tr>
@@ -87,7 +88,7 @@
                         <label for="superficie">Area (Superficie):</label>
                     </td>
                     <td>
-                        <input type="number" id="area" name="area" placeholder="Enter area size">
+                        <input type="number" id="superficie" name="superficie" placeholder="Enter area size" value="{{$state->area}}">
                     </td>
                 </tr>
                 <tr>

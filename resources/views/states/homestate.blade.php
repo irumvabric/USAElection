@@ -35,7 +35,7 @@
                     <th>GPA/PIB</th>
                     <th>Population</th>
                     <th>Area</th>
-                    <th>Flag</th>
+                    <th>Action</th>
                 </tr>
                 @foreach($states as $state)
                     <tr>
@@ -44,10 +44,18 @@
                         <td>{{ $state->pib }}</td>
                         <td>{{ $state->population }}</td>
                         <td>{{ $state->area }}</td>
-                        <td>{{ $state->id_flag }}</td>
+                        <td>
+                            <a href="/edsenator/{{$state->id}}">Edit</a>
+                            <a
+                            href="/delsenator/{{$state->id}}"
+                            onclick="return confirm('Are you sure you want to delete state?')"
+                            >Delete</a>
+                        </td>
                     </tr>
                 @endforeach
         </table>
+        @else
+        <p>No state</p>
         @endif
 </body>
 </html>
