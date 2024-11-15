@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\StateModel;
 use Illuminate\Http\Request;
-use App\Models\StateModel;
+use App\Models\State;
+use App\Models\State;
 
 class StateController extends Controller
 {
@@ -13,13 +13,9 @@ class StateController extends Controller
         return view('statehome');
     }
     public function showStateHome(){
-        $states = StateModel::all();
-<<<<<<< HEAD
+        $states = State::all();
 
         return view('states.homestate', ['states' => $states]);
-=======
-        return view('states.homestate',['states'=>$states]);
->>>>>>> 585fef36684d830494f88057df514b6afedb8ccd
     }
     public function showStateDelete(){
         return view('states.deletestate');
@@ -27,10 +23,11 @@ class StateController extends Controller
     public function createState(Request $request){
         $request->validate([
             'code' => ['required','min:1','max:3'],
-            'name' => ['required','min:1','max:3'],
-            'pib' => 'required|double',
-            'population' => 'required|double|min:1',
-            'area' => 'required|double|min:1',
+            'name' => ['required','min:3','max:20'],
+            'pib' => 'required',
+            'population' => 'required|min:1',
+            'id_flag'=>'required',
+            'area' => 'required|min:1',
         ]);
         State::create($request->all());
         return redirect('/state')->with('status', 'State added');
@@ -43,10 +40,10 @@ class StateController extends Controller
     public function update(Request $req, int $id){
         $req->validate([
             'code' => ['required','min:1','max:3'],
-            'name' => ['required','min:1','max:3'],
-            'pib' => 'required|double',
-            'population' => 'required|double|min:1',
-            'area' => 'required|double|min:1',
+            'name' => ['required','min:3','max:20'],
+            'pib' => 'required',
+            'population' => 'required|min:1',
+            'area' => 'required|min:1',
         ]);
         State::findOrfail($id)->update($req->all());
         return redirect('/state')->with('status', 'State updated');

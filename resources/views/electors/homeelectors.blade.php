@@ -37,16 +37,24 @@
             <th>State</th>
             <th>Recorded</th>
             <th>Updated</th>
+            <th>Action</th>
         </tr>
         @foreach($electors as $elector)
         <tr>
             <td>{{ $elector->id }}</td>
-            <td>{{ $elector->name }}</td>
+            <td>{{ $elector->name_elector }}</td>
             <td>{{ $elector->gender }}</td>
             <td>{{ $elector->party->name }}</td>
             <td>{{ $elector->state->name }}</td>
             <td>{{ $elector->created_at }}</td>
             <td>{{ $elector->updated_at }}</td>
+            <td>
+                <a href="/edelector/{{$elector->id}}">Edit</a>
+                <a
+                href="/delelector/{{$elector->id}}"
+                onclick="return confirm('Are you sure you want to delete elector?')"
+                >Delete</a>
+            </td>
         </tr>
     @endforeach
     </table>

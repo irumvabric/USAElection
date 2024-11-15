@@ -50,12 +50,19 @@
             <tr>
                 <th>ID</th>
                 <th>Image</th>
+                <th>Actions</th>
             </tr>
             @foreach($flags as $flag)
                 <tr>
                     <td>{{ $flag->id }}</td>
                     <td>{{ $flag->image }}</td>
-
+                    <td>
+                        <a href="/edflag/{{$flag->id}}">Edit</a>
+                        <a
+                        href="/delflag/{{$flag->id}}"
+                        onclick="return confirm('Are you sure you want to delete flag?')"
+                        >Delete</a>
+                    </td>
                 </tr>
             @endforeach
     </table>

@@ -55,7 +55,10 @@
                         <label for="nom_etat">State Code:</label>
                     </td>
                     <td>
-                    <input type="text" id="code" name="code" placeholder="Enter state name" required>
+                    <input type="text" id="code" name="code" placeholder="Enter state code" required>
+                    @error('code')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     </td>
                 </tr>
                 <tr>
@@ -64,6 +67,9 @@
                     </td>
                     <td>
                     <input type="text" id="name" name="name" placeholder="Enter state name" required>
+                    @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     </td>
                 </tr>
                 <tr>
@@ -72,6 +78,9 @@
                     </td>
                     <td>
                         <input type="number" step="0.01" id="pib" name="pib" placeholder="Enter GDP value">
+                        @error('pib')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                         @enderror
                     </td>
                 </tr>
                 <tr>
@@ -80,6 +89,9 @@
                     </td>
                     <td>
                         <input type="number" id="population" name="population" placeholder="Enter population">
+                        @error('population')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </td>
                 </tr>
                 <tr>
@@ -88,6 +100,20 @@
                     </td>
                     <td>
                         <input type="number" id="area" name="area" placeholder="Enter area size">
+                        @error('area')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="id_flag"> Flag:</label>
+                    </td>
+                    <td>
+                        <input type="number" id="id_flag" name="id_flag" placeholder="Enter flag">
+                        @error('id_flag')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     </td>
                 </tr>
                 <tr>

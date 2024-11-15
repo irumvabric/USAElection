@@ -45,23 +45,19 @@
     </style>
 </head>
 <body>
-    <h1>Create or Edit party page</h1>
-    <form action="submit_senateur.php" method="post">
+    <h1>Create party page</h1>
+    <form action="/postparty" method="post">
+        @csrf
         <table>
-            <tr>
-                <td>
-                    <label for="id_senateur">Party ID:</label>
-                </td>
-                <td>
-                    <input type="number" id="id_senateur" name="id_senateur" required>
-                </td>
-            </tr>
             <tr>
                 <td>
                     <label for="nom_senateur">Name:</label>
                 </td>
                 <td>
-                    <input type="file" id="fileInput">
+                    <input type="text" id="name_party" name="name_party">
+                    @error('name_party')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </td>
             </tr>
             <tr>

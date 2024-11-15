@@ -45,14 +45,16 @@
     </style>
 </head>
 <body>
-    <h1>Create or Edit flag page</h1>
-    <form action="submit_senateur.php" method="post">
-
-        <label for="id_senateur">Flag ID:</label>
-        <input type="number" id="id_senateur" name="id_senateur" required>
+    <h1>Edit flag page</h1>
+    <form action="/edflag/{{$flag->id}}" method="post">
+        @csrf
+        @method('PUT')
 
         <label for="nom_senateur">Image:</label>
-        <input type="file" id="fileInput">
+        <input type="file" id="image" name="image" value={{$flag->image}}">
+        @error('image')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
         <button type="submit">Submit</button>
         <button type="reset">Cancel</button>

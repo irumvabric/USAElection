@@ -8,10 +8,20 @@ use App\Http\Controllers\SenatorController;
 use App\Http\Controllers\StateController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('', function () {
     return view('welcome');
 });
 //states
+
+
+
+
+
+
+
+
+
+
 Route::get('/state', [StateController::class, 'showStateHome']);
 Route::get('/newstate', [StateController::class, 'showStateCreate']);
 Route::get('/delstate{id}', [StateController::class, 'showStateDelete']);
@@ -22,21 +32,20 @@ Route::put('/edstate/{id}', [StateController::class, 'update']);
 //flags
 Route::get('/flag', [FlagController::class, 'showFlagHome']);
 Route::get('/newflag', [FlagController::class, 'showFlagCreate']);
-Route::get('/delflag{id}', [FlagController::class, 'deleteFlag']);
+Route::get('/delflag/{id}', [FlagController::class, 'deleteFlag']);
 Route::post('/postflag', [FlagController::class, 'createFlag']);
 Route::get('/edflag/{id}', [FlagController::class, 'updateFlag']);
 Route::put('/edflag/{id}', [FlagController::class, 'update']);
 //party
 Route::get('/party', [PartyController::class, 'showPartyHome']);
 Route::get('/newparty', [PartyController::class, 'showPartyCreate']);
-Route::get('/delparty{id}', [PartyController::class, 'deleteParty']);
-Route::post('/postparty', [PartyController::class, 'createFlag']);
-Route::get('/edparty/{id}', [PartyController::class, 'updateFlag']);
+Route::get('/delparty/{id}', [PartyController::class, 'deleteParty']);
+Route::post('/postparty', [PartyController::class, 'createParty']);
+Route::get('/edparty/{id}', [PartyController::class, 'updateParty']);
 Route::put('/edparty/{id}', [PartyController::class,'update']);
 //governor
 Route::get('/governor', [GovernorController::class, 'showGovernorHome']);
 Route::get('/newgovernor', [GovernorController::class, 'showGovernorCreate']);
-Route::get('/delgovernor', [GovernorController::class, 'showGovernorDelete']);
 Route::post('/postgovernor', [GovernorController::class, 'createGovernor']);
 Route::get('/delgovernor/{id}', [GovernorController::class, 'deleteGovernor']);
 Route::get('/edgovernor/{id}', [GovernorController::class, 'updateGovernor']);
@@ -49,7 +58,7 @@ Route::get('/delsenator/{id}', [SenatorController::class, 'deleteSenator']);
 Route::get('/edsenator/{id}', [SenatorController::class, 'updateSenator']);
 Route::put('/edsenator/{id}', [SenatorController::class, 'update']);
 //elector
-Route::get('/presElector', [PresElectorController::class, 'showElectorHome']);
+Route::get('/elector', [PresElectorController::class, 'showElectorHome']);
 Route::get('/newElector', [PresElectorController::class, 'showElectorCreate']);
 Route::post('/postelector', [PresElectorController::class, 'createelector']);
 Route::get('/delelector/{id}', [PresElectorController::class, 'deleteelector']);

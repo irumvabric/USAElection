@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\PartyModel;
-use App\Models\StateModel;
+use App\Models\Party;
+use App\Models\State;
 
 class Governor extends Model
 {
@@ -16,10 +16,10 @@ class Governor extends Model
     ];
     public function party()
     {
-     return $this->belongsTo(PartyModel::class);
+     return $this->belongsTo(Party::class);
     }
     public function state()
     {
-     return $this->belongsTo(StateModel::class);
+     return $this->belongsTo(State::class);
     }
 }

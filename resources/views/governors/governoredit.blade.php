@@ -66,10 +66,24 @@
         @enderror
 
         <label for="id_etat">State:</label>
-        <input type="number" id="id_etat" name="id_etat" required>
+        <select id="state_id" name="state_id">
+            @foreach ($states as $state)
+                <option value="{{ $state->id }}">{{ $state->name }}</option>
+            @endforeach
+           </select>
+           @error('state_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
 
         <label for="id_parti">Party:</label>
-        <input type="number" id="id_parti" name="id_parti" required>
+        <select id="party_id" name="party_id" >
+            @foreach ($parties as $party)
+                <option value="{{ $party->id }}">{{ $party->name_party}}</option>
+            @endforeach
+        </select>
+        @error('party_id')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
         <button type="submit">Submit</button>
         <button type="reset">Cancel</button>

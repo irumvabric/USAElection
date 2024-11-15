@@ -46,15 +46,21 @@
 </head>
 <body>
     <div class="container">
-        <h1>Create a new presidential elector page</h1>
-        <form>
+        <h1>Edit presidential elector page</h1>
+        <form method="POST" action="/edelector/{{$elector->id}}">
+            @csrf
+            @method("PUT")
             <table>
                 <tr>
                     <td>
                         <label for="nom">Full name:</label>
                     </td>
                     <td>
-                    <input type="text" id="nom_etat" name="nom_etat" placeholder="Enter state name" required>
+                    <input type="text" id="name_elector" name="name_elector" placeholder="Enter elector name" required value="{{$elector->name_elector}}">
+                    @error('name_elector')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+
                     </td>
                 </tr>
                 <tr>
@@ -62,10 +68,13 @@
                         <label for="genre">Gender:</label>
                     </td>
                     <td>
-                        <select>
+                        <select id="gender" name="gender">
                             <option>Male</option>
                             <option>Female</option>
                         </select>
+                        @error('gender')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </td>
                 </tr>
                 <tr>
@@ -73,10 +82,14 @@
                         <label for="etat">State:</label>
                     </td>
                     <td>
-                        <select>
-                            <option>Arizona</option>
-                            <option>Washington</option>
-                        </select>
+                        <select id="state_id" name="state_id">
+                            @foreach ($states as $state)
+                                <option value="{{ $state->id }}">{{ $state->name }}</option>
+                            @endforeach
+                           </select>
+                           @error('state_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                     </td>
                 </tr>
                 <tr>
@@ -84,18 +97,22 @@
                         <label for="superficie">Party:</label>
                     </td>
                     <td>
-                        <select>
-                            <option>Republic</option>
-                            <option>Democrate</option>
+                        <select id="party_id" name="party_id" >
+                            @foreach ($parties as $party)
+                                <option value="{{ $party->id }}">{{ $party->name_party}}</option>
+                            @endforeach
                         </select>
+                        @error('party_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <button type="button" class="btn primary">Save</button>
+                        <button type="submit" class="btn primary">Save</button>
                     </td>
                     <td>
-                        <button type="button" class="btn primary">Cancel</button>
+                        <button type="reset" class="btn primary">Cancel</button>
 
                     </td>
                 </tr>
