@@ -21,3 +21,4 @@ class StateModel extends Model
         return $this->hasMany(Governor::class);
     }
 }
+

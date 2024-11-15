@@ -5,79 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Senator Home</title>
     <style>
-        body {
+          body {
             font-family: Arial, sans-serif;
-            margin: 20px;
         }
-
+        h1{
+            text-align: center;
+        }
         table {
-            border-collapse: collapse;
-            width: 100%;
-            border: 1px solid #ddd;
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
-        th, td {
-            text-align: left;
-            padding: 8px;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        tr:hover {  
-            background-color: #ddd;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        h2 {
-            text-align: center;
+        label {
+            display: block;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>Senators List</h1>
-    @if ($senators->count() > 0)
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name_senator</th>
-                    <th>ID PARTY</th>
-                    <th>ID STATE</th>
-                    <th>Gender</th>
-                    <th>State Name</th>
-                    <th>Party Name</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($senators as $senator)
+    <h1>Senator Home</h1>
+    @if (count($senators) > 0)
+    <table>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Party</th>
+                <th>State</th>
+                <th>Recorded</th>
+                <th>Updated</th>
+                <th>Action</th>
+            </tr>
+            @foreach($senators as $senator)
                 <tr>
                     <td>{{ $senator->id }}</td>
-                    <td>{{ $senator->name_senator }}</td>
-                    <td>{{ $senator->id_party }}</td>
-                    <td>{{ $senator->id_state }}</td>
+                    <td>{{ $senator->name }}</td>
+                    <td>{{ $senator->age }}</td>
                     <td>{{ $senator->gender }}</td>
+                    <td>{{ $senator->party->name }}</td>
                     <td>{{ $senator->state->name }}</td>
-                    <td>{{ $senator->party->name_party }}</td>
                     <td>{{ $senator->created_at }}</td>
                     <td>{{ $senator->updated_at }}</td>
+                    <td>
+                        <a href="/edsenator/{{$senator->id}}">Edit</a>
+                        <a
+                        href="/delsenator/{{$senator->id}}"
+                        onclick="return confirm('Are you sure you want to delete senator?')"
+                        >Delete</a>
+                    </td>
                 </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @else
-        <p>No senator found.</p>
+            @endforeach
+    </table>
     @endif
 </body>
 </html>

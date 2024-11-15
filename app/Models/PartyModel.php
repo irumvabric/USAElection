@@ -21,3 +21,4 @@ class PartyModel extends Model
         return $this->hasMany(Senator::class);
     }
 }
+

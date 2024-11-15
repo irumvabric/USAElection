@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Senateur Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Governor Home</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,9 +33,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        alert{
-            color: red;
-        }
+
         button {
             background-color: #4CAF50;
             color: white;
@@ -46,14 +45,15 @@
     </style>
 </head>
 <body>
-
-    <h1>Create senator page</h1>
-    <form action="/postsenator" method="post">
+    <h1>Create or edit governor page</h1>
+    <form action="/edgovernor/{{$governor->id}}" method="post">
         @csrf
+        @method("PUT")
+
         <label for="nom_senateur">Full name:</label>
-        <input type="text" id="name" name="name" required>
-        @error('name')
-        <div class="alert alert-danger">{{ $message }}</div>
+        <input type="text" id="name_governor" name="name_governor" required value="{{$governor->name_governor}}">
+        @error('name_governor')
+            <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 
         <label for="genre_senateur">Gender:</label>
@@ -62,37 +62,18 @@
             <option value="Female">Female</option>
         </select>
         @error('gender')
-            <div class="alert alert-danger">{{ $message }}</div>
+         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
-
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age">
-        @error('age')
-        <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
 
         <label for="id_etat">State:</label>
-       <select id="state_id" name="state_id">
-        @foreach ($states as $state)
-            <option value="{{ $state->id }}">{{ $state->name }}</option>
-        @endforeach
-       </select>
-       @error('state_id')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+        <input type="number" id="id_etat" name="id_etat" required>
 
         <label for="id_parti">Party:</label>
-        <select id="party_id" name="party_id">
-            @foreach ($parties as $party)
-                <option value="{{ $party->id }}">{{ $party->name_party}}</option>
-            @endforeach
-        </select>
-        @error('party_id')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+        <input type="number" id="id_parti" name="id_parti" required>
 
         <button type="submit">Submit</button>
         <button type="reset">Cancel</button>
+
     </form>
 </body>
 </html>

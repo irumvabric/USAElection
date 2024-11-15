@@ -7,75 +7,55 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
         }
-
+        h1{
+            text-align: center;
+        }
         table {
-            border-collapse: collapse;
-            width: 100%;
-            border: 1px solid #ddd;
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
-        th, td {
-            text-align: left;
-            padding: 8px;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        tr:hover {  
-            background-color: #ddd;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        h2 {
-            text-align: center;
+        label {
+            display: block;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>States List</h1>
-    @if ($states->count() > 0)
+    <h1>State Home</h1>
+        @if (count($states) > 0)
         <table>
-            <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Code</th>
                     <th>Name</th>
-                    <th>PIB</th>
+                    <th>GPA/PIB</th>
                     <th>Population</th>
                     <th>Area</th>
-                    <th>ID FLAG</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
+                    <th>Action</th>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach ($states as $state)
-                <tr>
-                    <td>{{ $state->id }}</td>
-                    <td>{{ $state->name }}</td>
-                    <td>{{ $state->pib }}</td>
-                    <td>{{ $state->population }}</td>
-                    <td>{{ $state->area }}</td>
-                    <td>{{ $state->id_flag }}</td>
-                    <td>{{ $state->created_at }}</td>
-                    <td>{{ $state->updated_at }}</td>
-                </tr>
+                @foreach($states as $state)
+                    <tr>
+                        <td>{{ $state->code }}</td>
+                        <td>{{ $state->name }}</td>
+                        <td>{{ $state->pib }}</td>
+                        <td>{{ $state->population }}</td>
+                        <td>{{ $state->area }}</td>
+                        <td>
+                            <a href="/edsenator/{{$state->id}}">Edit</a>
+                            <a
+                            href="/delsenator/{{$state->id}}"
+                            onclick="return confirm('Are you sure you want to delete state?')"
+                            >Delete</a>
+                        </td>
+                    </tr>
                 @endforeach
-            </tbody>
         </table>
-    @else
-        <p>No states found.</p>
-    @endif
+        @else
+        <p>No state</p>
+        @endif
 </body>
 </html>

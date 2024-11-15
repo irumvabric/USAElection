@@ -44,28 +44,21 @@
     </style>
 </head>
 <body>
-    <h1>Flags List</h1>
-    @if ($flags->count() > 0)
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Image</th>                       
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($flags as $flag)
+    <h1>Flag Home</h1>
+    @if (count($flags) > 0)
+    <table>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+            </tr>
+            @foreach($flags as $flag)
                 <tr>
                     <td>{{ $flag->id }}</td>
-                    <td><img src="data:image/png;base64, {{ base64_encode($flag->image) }}" alt="Flag Image"></td>
-                    <td>{{ $flag->created_at }}</td>
-                    <td>{{ $flag->updated_at }}</td>
+                    <td>{{ $flag->image }}</td>
+
                 </tr>
-                @endforeach
-            </tbody>
-        </table>
+            @endforeach
+    </table>
     @else
         <p>No flags found.</p>
     @endif

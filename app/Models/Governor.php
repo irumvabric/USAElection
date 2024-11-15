@@ -3,16 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\StateModel;
 use App\Models\PartyModel;
+use App\Models\StateModel;
+
 class Governor extends Model
 {
-    public function state()
-    {
-        return $this->belongsTo(StateModel::class);
-    }
+    protected $fillable= [
+        'name_governor',
+        'gender',
+        'party_id',
+        'state_id'
+    ];
     public function party()
     {
-        return $this->belongsTo(PartyModel::class);
+     return $this->belongsTo(PartyModel::class);
+    }
+    public function state()
+    {
+     return $this->belongsTo(StateModel::class);
     }
 }
