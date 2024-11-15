@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('governors', function (Blueprint $table) {
             $table->id();
             $table->string('name_governor');
-            $table->string('id_parti');
-            $table->string('id_state');
             $table->string('gender');
             $table->foreignId('state_id')->constrained();
             $table->foreignId('party_id')->constrained();

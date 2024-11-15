@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('senators', function (Blueprint $table) {
             $table->id();
             $table->string('name_senator');
-            $table->double('id_parti');
-            $table->string('id_state');
             $table->string('gender');
             $table->double('age');
             $table->foreignId('state_id')->constrained();

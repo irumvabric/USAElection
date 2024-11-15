@@ -46,7 +46,9 @@
 <body>
     <h1>Create or edit senator page</h1>
     <form action="submit_senateur.php" method="post">
-
+    </form method = "POST" action="{{ route('senators.store') }}">
+    
+    @csrf
         <label for="id_senateur">ID Senator:</label>
         <input type="number" id="id_senateur" name="id_senateur" required>
 
