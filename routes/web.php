@@ -8,10 +8,20 @@ use App\Http\Controllers\SenatorController;
 use App\Http\Controllers\StateController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('', function () {
     return view('welcome');
 });
 //states
+
+
+
+
+
+
+
+
+
+
 Route::get('/state', [StateController::class, 'showStateHome']);
 Route::get('/newstate', [StateController::class, 'showStateCreate']);
 Route::get('/delstate{id}', [StateController::class, 'showStateDelete']);
