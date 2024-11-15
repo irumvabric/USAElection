@@ -10,7 +10,7 @@ class GovernorController extends Controller
 {
     public function showGovernorHome(){
         $governors= Governor::all();
-        return view('goverors.homegovernors',['governors'=>$governors]);
+        return view('governors.homegouvernors',['governors'=>$governors]);
     }
 
     public function showGovernorCreate(){
@@ -46,13 +46,12 @@ class GovernorController extends Controller
     }
     public function update(Request $req, int $id){
         $req->validate([
-            $request->validate([
                 'name_governor' => ['required','min:3','max:50'],
                 'gender' => 'required',
                 'state_id' => 'required|integer',
                 'party_id' => 'required|integer',
-            ]);
         ]);
+    
         Governor::findOrfail($id)->update($req->all());
         return redirect('/governor')->with('status', 'governor updated');
     }

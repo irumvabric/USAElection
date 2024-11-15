@@ -18,8 +18,7 @@ return new class extends Migration
             $table->foreignId('state_id')->constrained();
             $table->foreignId('party_id')->constrained();
             $table->timestamps();
-            $table->foreignId('party_id')->constrained();
-            $table->foreignId('state_id')->constrained();
+           
         });
     }
 

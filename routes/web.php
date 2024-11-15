@@ -37,7 +37,7 @@ Route::put('/edparty/{id}', [PartyController::class,'update']);
 Route::get('/governor', [GovernorController::class, 'showGovernorHome']);
 Route::get('/newgovernor', [GovernorController::class, 'showGovernorCreate']);
 Route::get('/delgovernor', [GovernorController::class, 'showGovernorDelete']);
-Route::post('/postsenator', [GovernorController::class, 'createGovernor']);
+Route::post('/postgovernor', [GovernorController::class, 'createGovernor']);
 Route::get('/delgovernor/{id}', [GovernorController::class, 'deleteGovernor']);
 Route::get('/edgovernor/{id}', [GovernorController::class, 'updateGovernor']);
 Route::put('/edgovernor/{id}', [GovernorController::class, 'update']);
