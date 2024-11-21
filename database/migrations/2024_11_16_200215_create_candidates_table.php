@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('flag_models', function (Blueprint $table) {
+        Schema::create('candidates', function (Blueprint $table) {
             $table->id();
-            $table->string('path')->default('default.png');
-            $table->foreignId('state_id')->constrained()->onDelete('cascade');
+            $table->string('name_candidate');
+            $table->string('gender');
+            $table->foreignId('state_id')->constrained();
+            $table->foreignId('party_id')->constrained();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('flag_models');
+        Schema::dropIfExists('candidates');
     }
 };

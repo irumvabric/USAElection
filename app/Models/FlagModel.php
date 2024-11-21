@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\State;
 
 class FlagModel extends Model
 {
@@ -10,4 +11,7 @@ class FlagModel extends Model
         'image',
     ];
     //
+    public function state(){
+        return $this->belongsTo(State::class);
+    }
 }

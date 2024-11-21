@@ -106,6 +106,18 @@
                         @enderror
                     </td>
                 </tr>
+
+                <tr>
+                    <td>
+                        <label for="id_flag"> Flag:</label>
+                    </td>
+                    <td>
+                        <input type="file" id="flag" name="flag"  accept="image/png,image/jpeg">
+                        @error('flag')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    </td>
+                </tr>                
                 <tr>
                     <td>
                         <button type="submit" class="btn primary">Save</button>

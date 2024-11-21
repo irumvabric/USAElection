@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Elector;
 use App\Models\Senator;
 use App\Models\Governor;
+use App\Models\FlagModel;
 class StateModel extends Model
 {
     public function electors()
@@ -19,6 +20,10 @@ class StateModel extends Model
     public function governors()
     {
         return $this->hasMany(Governor::class);
+    }
+    public function flag()
+    {
+        return $this->hasOne(FlagModel::class); 
     }
 }
 

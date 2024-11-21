@@ -55,7 +55,7 @@
                         <label for="nom">Full name:</label>
                     </td>
                     <td>
-                    <input type="text" id="nom_elector" name="name_elector" placeholder="Enter state name" required>
+                    <input type="text" id="nom_elector" name="name_elector" placeholder="Enter Elector name" required>
                     @error('name_elector')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

@@ -45,6 +45,7 @@
                         <td>{{ $state->population }}</td>
                         <td>{{ $state->area }}</td>
                         <td>
+                            <a href="/detstate/{{$state->id}}">Details</a>
                             <a href="/edstate/{{$state->id}}">Edit</a>
                             <a
                             href="/delstate/{{$state->id}}"

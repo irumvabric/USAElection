@@ -18,7 +18,6 @@ return new class extends Migration
             $table->double('pib');
             $table->double('population');
             $table->double('area');
-            $table->double('id_flag');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\State;
-use App\Models\State;
+use App\Models\FlagModel;
 
 class StateController extends Controller
 {
@@ -26,10 +26,31 @@ class StateController extends Controller
             'name' => ['required','min:3','max:20'],
             'pib' => 'required',
             'population' => 'required|min:1',
-            'id_flag'=>'required',
+            'flag'=>'required',
             'area' => 'required|min:1',
         ]);
-        State::create($request->all());
+        
+      $filename = time(). '.' .$request->flag->extension();
+      $path = $request->file('flag')->storeAs(
+        'FlagsUsa',
+        $filename,
+        'public'
+
+
+      );
+
+      
+      $state = State::create([
+        'code'=>$request->code,
+        'name'=> $request->name,
+        'pib'=> $request->pib,
+        'area'=> $request->area,
+        'population'=> $request->population,
+       ] );
+
+      $flag = new FlagModel();
+      $flag->path = $path;
+      $state->flag()->save($flag);
         return redirect('/state')->with('status', 'State added');
     }
 
@@ -53,4 +74,10 @@ class StateController extends Controller
         $state->delete();
         return redirect('/state')->with('status', 'State deleted');
     }
+    public function showStateDetails($pk){
+        $state = State::findOrFail($pk);
+
+           return view('states.state_details',['state' => $state]);
+    }
 }
+

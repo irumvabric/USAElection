@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>State Home</title>
+    <title>Candidate Home</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -46,74 +46,65 @@
 </head>
 <body>
     <div class="container">
-        <h1>Create a new state page</h1>
-        <form method="POST" action="/postState" enctype="multipart/form-data">
+        <h1>Edit Candidate page</h1>
+        <form method="POST" action="/edcandidate/{{$candidate->id}}">
             @csrf
+            @method("PUT")
             <table>
                 <tr>
                     <td>
-                        <label for="nom_etat">State Code:</label>
+                        <label for="nom">Full name:</label>
                     </td>
                     <td>
-                    <input type="text" id="code" name="code" placeholder="Enter state code" required>
-                    @error('code')
+                    <input type="text" id="name_candidate" name="name_candidate" placeholder="Enter Candidate name" required value="{{$candidate->name_candidate}}">
+                    @error('name_candidate')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
+
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="nom_etat">State Name:</label>
+                        <label for="genre">Gender:</label>
                     </td>
                     <td>
-                    <input type="text" id="name" name="name" placeholder="Enter state name" required>
-                    @error('name')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="pib">GDP (PIB):</label>
-                    </td>
-                    <td>
-                        <input type="number" step="0.01" id="pib" name="pib" placeholder="Enter GDP value">
-                        @error('pib')
+                        <select id="gender" name="gender">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                        @error('gender')
                             <div class="alert alert-danger">{{ $message }}</div>
-                         @enderror
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="population">Population:</label>
-                    </td>
-                    <td>
-                        <input type="number" id="population" name="population" placeholder="Enter population">
-                        @error('population')
-                        <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="superficie">Area (Superficie):</label>
+                        <label for="etat">State:</label>
                     </td>
                     <td>
-                        <input type="number" id="area" name="area" placeholder="Enter area size">
-                        @error('area')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                        <select id="state_id" name="state_id">
+                            @foreach ($states as $state)
+                                <option value="{{ $state->id }}">{{ $state->name }}</option>
+                            @endforeach
+                           </select>
+                           @error('state_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="id_flag"> Flag:</label>
+                        <label for="superficie">Party:</label>
                     </td>
                     <td>
-                        <input type="file" id="flag" name="flag"  accept="image/png,image/jpeg">
-                        @error('flag')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                        <select id="party_id" name="party_id" >
+                            @foreach ($parties as $party)
+                                <option value="{{ $party->id }}">{{ $party->name_party}}</option>
+                            @endforeach
+                        </select>
+                        @error('party_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </td>
                 </tr>
                 <tr>
