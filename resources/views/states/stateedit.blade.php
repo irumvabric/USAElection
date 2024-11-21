@@ -47,7 +47,7 @@
 <body>
     <div class="container">
         <h1>Edit state page</h1>
-        <form method="POST" action="/edstate/{{$state->id}}">
+        <form method="POST" action="/edstate/{{$state->id}}" enctype="multipart/form-data">
             @csrf
             @method("PUT")
             <table>
@@ -106,10 +106,14 @@
                         @enderror
                     </td>
                 </tr>
-
                 <tr>
                     <td>
-                        <label for="id_flag"> Flag:</label>
+                        <h4><img src="{{ Storage::url($state->flag->path)}}" alt="" height="50px"></h4>
+                    </td>
+                </tr>  
+                <tr>
+                    <td>
+                        Choose new flag image:
                     </td>
                     <td>
                         <input type="file" id="flag" name="flag"  accept="image/png,image/jpeg">

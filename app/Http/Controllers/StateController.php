@@ -35,8 +35,6 @@ class StateController extends Controller
         'FlagsUsa',
         $filename,
         'public'
-
-
       );
 
       
@@ -58,16 +56,37 @@ class StateController extends Controller
         $state = State::findOrfail($id);
         return view('states.stateedit',['state'=>$state]);
     }
-    public function update(Request $req, int $id){
-        $req->validate([
+    public function update(Request $request, int $id){
+        $request->validate([
             'code' => ['required','min:1','max:3'],
             'name' => ['required','min:3','max:20'],
             'pib' => 'required',
             'population' => 'required|min:1',
             'area' => 'required|min:1',
+            'flag' => 'required',
         ]);
-        State::findOrfail($id)->update($req->all());
-        return redirect('/state')->with('status', 'State updated');
+        
+        $state = State::find($id);
+        $state->code = $request->code;
+        $state->name = $request->name;
+        if ($request->hasFile('flag')) {
+            $filename = time(). '.' .$request->flag->extension();
+            $path = $request->file('flag')->storeAs(
+              'FlagsUsa',
+              $filename,
+              'public'
+            );
+            $state->flag->path = $path;
+            $state->flag->update();
+        }
+        $state->pib = $request->pib;
+        $state->area = $request->area;
+        $state->population = $request->population;
+        $state->update();
+
+        
+        
+        return redirect("/detstate/{$id}")->with('status', 'State updated');
     }
     public function deleteState(int $id){
         $state = State::findOrfail($id);
